@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="/manifest.json" rel="manifest"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <script src="/assets/mockup/application-3830731b355299426e7a5e62687a9985aed4e8e0aebaf10187a26c1a90071175.js" data-turbo-track="reload"></script>
+    <link rel="stylesheet" href="/assets/mockup/style.css">
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="b7xjfEjbVFLuAf4axb9BUaa2IqG4ChXaLQdnRaVHZ7ja8lKuMnzi00X7zUiUm8YmfW1qo_yc4wtQVy994hjKzg" />
+    <title>超運集團有限公司</title>
+</head>
+
+<body>
+    <div id="header">
+        <header class="nav tablet-hide">
+            <nav class="nav__content">
+                <ul class="nav__content--left">
+                    <li class="nav__menu-list--logo"><a class="logo" href="/"></a></li>
+                    <li class="nav__menu-list-contain">
+                        <ul class="nav__menu-list-content">
+                            <li class="nav__menu-list">
+                                <div class="nav__menu-list--title">
+                                    <p class="h4">全部活動</p>
+                                </div>
+                            </li>
+                            <li class="nav__menu-list">
+                                <div class="nav__menu-list--title">
+                                    <p class="h4">日本旅遊</p>
+                                </div>
+                            </li>
+                            <li class="nav__menu-list">
+                                <div class="nav__menu-list--title">
+                                    <p class="h4">日本交通</p>
+                                </div>
+                            </li>
+                            <li class="nav__menu-list">
+                                <div class="nav__menu-list--title">
+                                    <p class="h4">日本美食</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav__content--right">
+                    <li class="nav__menu-list search">
+                        <div class="search__content"><input class="search__input" id="desktop_nav-search" type="text" /><span class="icons icon--search"></span><a class="btn" href="/">搜尋</a>
+                            <div class="search__keyword">
+                                <p class="search__keyword--title">熱門關鍵字：</p>
+                                <ul class="search__keyword--content">
+                                    <li class="search__keyword--keyword"><a href="/">北海道</a></li>
+                                    <li class="search__keyword--keyword"><a href="/">東京</a></li>
+                                    <li class="search__keyword--keyword"><a href="/">大阪</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav__menu-list"><a class="p" href="/"><span class="icons icon--cart"></span>購物車</a></li>
+                    <a class="p login-btn" href="/">
+                        <li class="nav__menu-list login">登入</li>
+                    </a>
+                </ul>
+            </nav>
+        </header>
+        <header class="nav desktop-hide">
+            <nav class="nav__content">
+                <ul class="nav__content--left">
+                    <li class="nav__menu-list--bar"></li>
+                    <li class="nav__menu-list--logo"><a class="logo" href="/"></a></li>
+                </ul>
+                <ul class="nav__content--right">
+                    <li class="nav__menu-list"><a class="p" href="/"><span class="icons icon--cart"></span>購物車</a></li>
+                    <li class="nav__menu-list login"><a class="p" href="/">登入</a></li>
+                </ul>
+            </nav>
+        </header>
+    <p class="announce">消費滿 $3,000，週週抽東京大阪來回機票！</p>
+    <script>
+        //<![CDATA[
+
+        window.isLogin = false;
+
+        // 點擊其他地方關閉
+        $('html').click(function(event) {
+            // 會員選單
+            $('.nav__logout-menu').hide();
+            // 搜尋建議
+            $('.search__keyword').hide();
+        });
+
+        // 顯示會員選單
+        $('.nav__menu-list.logout').click(function(event) {
+            // 點擊 p 或 span 才顯示
+            if (event.target.tagName.toLowerCase() === 'p' || event.target.tagName.toLowerCase() === 'span') {
+                $('.nav__logout-menu').show();
+            }
+
+            // 阻止事件冒泡，避免觸發 html click
+            if (event.target.tagName.toLowerCase() != 'a') {
+                event.stopPropagation();
+            }
+        });
+
+        // 顯示搜尋建議
+        $('li.search, li.nav__menu-list.search').click(function(event) {
+            // 點擊 input 才顯示
+            if (event.target.classList == 'search__input') {
+                $('.search__keyword').show();
+            }
+
+            // 阻止事件冒泡，避免觸發 html click
+            if (event.target.tagName.toLowerCase() != 'a') {
+                event.stopPropagation();
+            }
+        });
+
+        //]]>
+    </script>
+    </div>
+    <turbo-frame id="flash" target="_top">
+        <script>
+            //<![CDATA[
+
+            setTimeout(function() {
+                document.getElementById('flash').innerHTML = "";
+            }, 2000);
+
+            //]]>
+        </script>
+    </turbo-frame>
+    <div class="index-content">
+        <div class="banner">
+            <div class="owl-carousel index__banner">
+                <a href="/"><img src="/assets/view-1.jpg"/></a>
+                <a href="/"><img src="assets/view-2.jpg" /></a>
+                <a href="/"><img src="assets/view-3.jpg" /></a>
+                <a href="/"><img src="assets/view-4.jpg" /></a>
+                <a href="/"><img src="assets/view-5.jpg" /></a>
+                <a href="/"><img src="assets/view-6.jpg" /></a>
+            </div>
+        </div>
+        <div class="index">
+            <div class="container">
+                <div class="index__section index__wine">
+                    <h1 class="h1 title">熱門伴手禮</h1>
+                    <div class="index__section--content">
+                        <div class="cards__content owl-carousel">
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-1.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover" style="background: url(/assets/food1-1.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">東京伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">資生堂PARLOUR 法式酥餅 22枚入</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1150</p>
+                                    <p class="sale-price h4">$980</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-2.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food2-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">東京伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/products/12008">YOKU MOKU 原味雪茄蛋捲禮盒30入</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1200</p>
+                                    <p class="sale-price h4">$1080</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-3.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food3-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">東京伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">虎屋TORAYA 日本老舖皇室御用 小型羊羹 5條入</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$700</p>
+                                    <p class="sale-price h4">$630</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-4.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food4-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">大阪伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">TSUJIRI辻利茶舗 抹茶牛奶 溫和風味 200g</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1600</p>
+                                    <p class="sale-price h4">$1440</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-5.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food5-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">大阪伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">神戶風月堂 Gaufres 法蘭酥夾心餅乾 25S</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1100</p>
+                                    <p class="sale-price h4">$990</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-6.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food6-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">大阪伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">呼吸巧克力</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$720</p>
+                                    <p class="sale-price h4">$578</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                </ul>
+                            </article>
+                        </div>
+                        <div class="index__section--info">
+                            <div class="wine--bg2"></div>
+                            <div class="wine--bg3"></div>
+                            <div class="info__content">
+                                <h2 class="h3">伴手禮館</h2>
+                                <p>日本話題熱銷伴手禮，從品牌、風格、主題企劃，挑選最適合的伴手禮。</p><a class="btn btn" href="/">馬上逛逛</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index__section index__sake">
+                    <h1 class="h1 title">最新伴手禮</h1>
+                    <div class="index__section--content">
+                        <div class="index__section--info">
+                            <div class="sake--bg2"></div>
+                            <div class="sake--bg3"></div>
+                            <div class="info__content">
+                                <h2 class="h3">日本酒館</h2>
+                                <p>十四代、新政、而今、黑龍等專家推薦日本清酒最新活動，同步日本、冷藏空運直送！</p><a class="btn btn" href="/">馬上逛逛</a></div>
+                        </div>
+                        <div class="cards__content owl-carousel">
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-7.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food7-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">北海道伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">Calbee薯條三兄弟 18g×10袋入</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$2880</p>
+                                    <p class="sale-price h4">$2880</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--event"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--pre-sale"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-8.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food8-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">北海道伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">北海道 白色戀人 白巧克力布丁</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1025</p>
+                                    <p class="sale-price h4">$970</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--event"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--in-stock"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-9.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food9-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">北海道伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">ROYCE' 薯片微苦巧克力</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$2050</p>
+                                    <p class="sale-price h4">$1780</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-10.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food10-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">福岡伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">一蘭拉麵 博多細麵</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$250</p>
+                                    <p class="sale-price h4">$235</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--event"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-11.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food11-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">福岡伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">福太郎 明太子仙貝 原味</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$2400</p>
+                                    <p class="sale-price h4">$1920</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--event"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                            <article class="card">
+                                <div class="card__photo">
+                                    <a class="cards__img cards__img--default" style="background: url(/assets/food-12.webp)no-repeat center/contain;" href="/"></a>
+                                    <a class="cards__img cards__img--hover"style="background: url(/assets/food12-2.webp)no-repeat center/contain;" href="/"></a>
+                                </div>
+                                <div class="card_collections">
+                                    <div class="card_collection"><span class="icons icon--droplet"></span><span class="card_collection-name">福岡伴手禮</span></div>
+                                </div>
+                                <h3 class="p card_name"><a href="/">博多名店 一藤牛腸鍋 真空包裝 醬油湯底</a></h3>
+                                <div class="card__price">
+                                    <p class="origin-price h5">$1980</p>
+                                    <p class="sale-price h4">$1850</p>
+                                </div>
+                                <div class="card__rating"><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span><span class="icons icon--star-empty"></span></div>
+                                <ul
+                                    class="card__status">
+                                    <li class="status__icon">
+                                        <div class="icons icon--new-product"></div>
+                                    </li>
+                                    <li class="status__icon">
+                                        <div class="icons icon--event"></div>
+                                    </li>
+                                    </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-yellow">
+                <div class="container">
+                    <div class="index__section">
+                        <h1 class="h1 title">熱門旅記</h1>
+                        <div class="index__section--content">
+                            <div class="articles__content owl-carousel">
+                                <div class="article article--small"><a class="articles__img" style="background-image:url(/assets/articles-1.jpg);" href="/"></a>
+                                    <div class="article__content">
+                                        <h4 class="h4"><a class="h4" href="/">【小編帶你玩】東京攻略</a></h4>
+                                        <p><a href="/">這週我們在 IG 讓大家票選想看小編怎麼玩東京，雖然沒有以壓倒性的票數勝出，但它可是我們商城的長年...</a></p>
+                                        <div class="article__bottom">
+                                            <div class="article__info"><span class="article__date"><span class="icons icon--date"></span>2025-04-18</span><span class="article__view"><span class="icons icon--view"></span>487</span>
+                                            </div><span class="article__readmore"><a href="/">Read more</a></span></div>
+                                    </div>
+                                </div>
+                                <div class="article article--small"><a class="articles__img" style="background-image:url(/assets/articles-2.jpg);" href="/"></a>
+                                    <div class="article__content">
+                                        <h4 class="h4"><a class="h4" href="/">【小編帶你玩】大阪攻略</a></h4>
+                                        <p><a href="/">這週我們在 IG 讓大家票選想看小編怎麼玩大阪，雖然沒有以壓倒性的票數勝出，但它可是我們商城的長年...</a></p>
+                                        <div class="article__bottom">
+                                            <div class="article__info"><span class="article__date"><span class="icons icon--date"></span>2025-04-09</span><span class="article__view"><span class="icons icon--view"></span>542</span>
+                                            </div><span class="article__readmore"><a href="/">Read more</a></span></div>
+                                    </div>
+                                </div>
+                                <div class="article article--small"><a class="articles__img" style="background-image:url(/assets/articles-3.jpg);" href="/"></a>
+                                    <div class="article__content">
+                                        <h4 class="h4"><a class="h4" href="/">【小編帶你玩】北海道攻略</a></h4>
+                                        <p><a href="/">這週我們在 IG 讓大家票選想看小編怎麼玩北海道，雖然沒有以壓倒性的票數勝出，但它可是我們商城的長年...</a></p>
+                                        <div class="article__bottom">
+                                            <div class="article__info"><span class="article__date"><span class="icons icon--date"></span>2025-03-28</span><span class="article__view"><span class="icons icon--view"></span>444</span>
+                                            </div><span class="article__readmore"><a href="/">Read more</a></span></div>
+                                    </div>
+                                </div>
+                                <div class="article article--small"><a class="articles__img" style="background-image:url(/assets/articles-4.jpg);" href="/"></a>
+                                    <div
+                                        class="article__content">
+                                        <h4 class="h4"><a class="h4" href="/">【小編帶你玩】沖繩攻略</a></h4>
+                                        <p><a href="/">這週我們在 IG 讓大家票選想看小編怎麼玩沖繩，雖然沒有以壓倒性的票數勝出，但它可是我們商城的長年...</a></p>
+                                        <div class="article__bottom">
+                                            <div class="article__info"><span class="article__date"><span class="icons icon--date"></span>2023-07-10</span><span class="article__view"><span class="icons icon--view"></span>9810</span>
+                                            </div><span class="article__readmore"><a href="/">Read more</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div class="swear index__swear">
+        <div class="container">
+            <div class="index__section swear__content">
+                <h1 class="h1 title">品迷網品質宣言</h1>
+                <div class="swear__list">
+                    <div class="swear__list--item">
+                        <div class="icons icon--home_delivery"></div>
+                        <h4 class="h4">全程冷藏運送</h4>
+                        <p>葡萄酒、清酒一律採用低溫冷藏方式配送，讓您在炎夏也能收到品質無虞的好酒。</p>
+                    </div>
+                    <div class="swear__list--item">
+                        <div class="icons icon--expert"></div>
+                        <h4 class="h4">專家把關不踩雷</h4>
+                        <p>每一款都由我們的團隊把關，在上萬款酒中挑選最值得您品嚐的好酒。</p>
+                    </div>
+                    <div class="swear__list--item">
+                        <div class="icons icon--affordable_price"></div>
+                        <h4 class="h4">最親民的價格</h4>
+                        <p>在品質的門檻下，我們致力提供最親民的價格給您，讓您輕鬆享受。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <turbo-frame id="script"></turbo-frame>
+    <footer class="footer">
+        <div class="footer__content">
+            <ul class="footer__list">
+                <li class="footer__list--title">
+                    <p class="h4">公司服務</p>
+                </li>
+                <li class="footer__list--link"><a class="p" href="/">日本伴手禮</a></li>
+                <li class="footer__list--link"><a class="p" href="/">日本酒館</a></li>
+            </ul>
+            <ul class="footer__list">
+                <li class="footer__list--title">
+                    <p class="h4">旅遊常識</p>
+                </li>
+                <li class="footer__list--link"><a class="p" href="/">知識館</a></li>
+                <li class="footer__list--link"><a class="p" href="/">作者列表</a></li>
+            </ul>
+            <ul class="footer__list">
+                <li class="footer__list--title">
+                    <p class="h4">關於我們</p>
+                </li>
+                <li class="footer__list--link"><a class="p" href="/">隱私權條款</a></li>
+                <li class="footer__list--link"><a class="p" href="/">服務條款</a></li>
+            </ul>
+            <ul class="footer__list">
+                <li class="footer__list--title">
+                    <p class="h4">追蹤我們</p>
+                </li>
+                <li class="footer__list--sns"><a class="icons icon--fb-w" href="/"></a><a class="icons icon--line-w" href="/"></a><a class="a icons icon--ig-w" href="/"></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
